@@ -28,7 +28,7 @@ const DashboardPage = async () => {
           {todos?.map((todo) => (
             <div
               key={todo.id}
-              className="w-full flex justify-between items-center border rounded p-2"
+              className="w-full flex justify-between text-gray-900 items-center border rounded p-2"
             >
               <h2>{todo.task}</h2>
               <div className="flex gap-2">
