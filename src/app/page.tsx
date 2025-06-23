@@ -1,5 +1,6 @@
-import { redirect } from 'next/navigation';
+//import { redirect } from 'next/navigation';
 
 export default function Home() {
-  redirect('/login');
+  <h1 className="text-white">Hello world</h1>;
+  //redirect('/auth');
 }

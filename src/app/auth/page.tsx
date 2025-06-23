@@ -1,13 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
-'use client'; // Adicione esta diretiva para componentes que usam hooks no Next.js App Router
+"use client"; // Adicione esta diretiva para componentes que usam hooks no Next.js App Router
 
-import { useState } from 'react';
+import { useState } from "react";
 import { login } from "./action";
+import { signinWithGoogle } from "@/utils/action";
 
 export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false); // Estado para controlar o loader
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: {
+    preventDefault: () => void;
+    currentTarget: HTMLFormElement | undefined;
+  }) => {
     event.preventDefault(); // Previne o comportamento padrão do formulário
     setIsLoading(true); // Ativa o loader
 
@@ -57,9 +61,10 @@ export default function LoginPage() {
             <button
               type="submit"
               className={`w-full py-2 rounded-md transition-colors duration-200
-                ${isLoading
-                  ? 'bg-indigo-400 cursor-not-allowed' // Estilo quando carregando
-                  : 'bg-indigo-600 hover:bg-indigo-700 cursor-pointer' // Estilo normal
+                ${
+                  isLoading
+                    ? "bg-indigo-400 cursor-not-allowed" // Estilo quando carregando
+                    : "bg-indigo-600 hover:bg-indigo-700 cursor-pointer" // Estilo normal
                 }
               `}
               disabled={isLoading} // Desabilita o botão enquanto carrega
@@ -67,15 +72,37 @@ export default function LoginPage() {
               {isLoading ? (
                 <div className="flex items-center justify-center">
                   {/* Ícone de loader simples (você pode substituir por um SVG ou componente de spinner) */}
-                  <svg className="animate-spin h-5 w-5 text-white mr-3" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  <svg
+                    className="animate-spin h-5 w-5 text-white mr-3"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
                   </svg>
                   Carregando...
                 </div>
               ) : (
-                'Entrar'
+                "Entrar"
               )}
+            </button>
+          </form>
+          <form action= {signinWithGoogle}>
+            <button
+              type="submit"
+              className="w-full mt-2 py-2 rounded-md transition-colors bg-gray-700 cursor-pointer duration-200"
+            >
+              Entrar com Google
             </button>
           </form>
         </div>
