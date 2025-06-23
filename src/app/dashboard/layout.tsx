@@ -1,4 +1,3 @@
-// app/dashboard/layout.tsx
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import { ReactNode } from "react";
@@ -19,19 +18,15 @@ const DashboardLayout = async ({ children }: { children: ReactNode }) => {
   const userEmail = user.email;
 
   return (
-    <div className="flex h-screen bg-gray-100">
-      {/* Barra de Navegação Lateral */}
-      <aside className="w-64 bg-white shadow-md flex flex-col">
-        {/* Logo na Sidebar */}
+    <div className="flex flex-col md:flex-row h-screen bg-gray-100">
+      {/* Sidebar */}
+      <aside className="md:w-64 w-full md:h-auto h-auto bg-white shadow-md flex flex-col">
         <div className="p-4 border-b border-gray-200">
           <span className="text-2xl font-bold text-indigo-600">TalkToText</span>
         </div>
-
-        {/* Links de Navegação */}
         <nav className="flex-1 p-4">
           <Link href="/dashboard" legacyBehavior>
             <a className="flex items-center px-4 py-2 text-gray-700 hover:bg-indigo-500 hover:text-white rounded-md transition-colors duration-200">
-              {/* Ícone de Dashboard (exemplo, você pode usar um SVG ou biblioteca de ícones) */}
               <svg
                 className="w-5 h-5 mr-3"
                 fill="none"
@@ -52,21 +47,15 @@ const DashboardLayout = async ({ children }: { children: ReactNode }) => {
         </nav>
       </aside>
 
-      {/* Área Principal de Conteúdo */}
-      <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Cabeçalho */}
-        <header className="bg-white shadow-sm p-4 flex justify-between items-center border-b border-gray-200">
-          {/* Logo no Cabeçalho (se quiser um diferente ou apenas texto) */}
-          <span className="text-xl font-semibold text-gray-800">{userEmail}</span>
-
-
-          {/* Botão de Logout */}
+      {/* Conteúdo Principal */}
+      <div className="flex-1 flex flex-col overflow-hidden min-h-screen">
+        <header className="bg-white shadow-sm p-4 flex flex-col md:flex-row justify-between items-center border-b border-gray-200 gap-2">
+          <span className="text-sm text-gray-600">{userEmail}</span>
           <form action={signOut}>
             <button
               type="submit"
-              className="bg-red-500 text-white px-4 py-2 cursor-pointer rounded-md hover:bg-red-600 transition-colors duration-200 flex items-center"
+              className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 flex items-center"
             >
-              {/* Ícone de Logout (exemplo) */}
               <svg
                 className="w-5 h-5 mr-2"
                 fill="none"
@@ -86,8 +75,7 @@ const DashboardLayout = async ({ children }: { children: ReactNode }) => {
           </form>
         </header>
 
-        {/* Conteúdo da Página (onde `children` será renderizado) */}
-        <main className="flex-1 p-6 overflow-y-auto">{children}</main>
+        <main className="flex-1 p-4 overflow-y-auto">{children}</main>
       </div>
     </div>
   );
