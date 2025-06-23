@@ -2,7 +2,8 @@
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import { ReactNode } from "react";
-import Link from "next/link"; // Importe o componente Link do Next.js
+import Link from "next/link"; 
+import { signOut } from "@/utils/action"
 
 const DashboardLayout = async ({ children }: { children: ReactNode }) => {
   const supabase = await createClient();
@@ -42,10 +43,10 @@ const DashboardLayout = async ({ children }: { children: ReactNode }) => {
           <span className="text-xl font-semibold text-gray-800"></span>
 
           {/* Botão de Logout */}
-          <form>
+          <form action={signOut}>
             <button
               type="submit"
-              className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-colors duration-200 flex items-center"
+              className="bg-red-500 text-white px-4 py-2 cursor-pointer rounded-md hover:bg-red-600 transition-colors duration-200 flex items-center"
             >
               {/* Ícone de Logout (exemplo) */}
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>

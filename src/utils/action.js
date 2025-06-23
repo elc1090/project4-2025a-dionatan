@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 const signInWith = (provider) => async () => {
   const supabase = await createClient();
 
-  const auth_callback_url = `${process.env.SITE_URL}/auth/callback`;
+  const auth_callback_url = `${process.env.SITE_URL}/login/callback`;
 
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider,
@@ -21,4 +21,9 @@ const signInWith = (provider) => async () => {
 
 const signinWithGoogle = signInWith("google");
 
-export { signinWithGoogle };
+const signOut = async () => {
+  const supabase = await createClient();
+  await supabase.auth.signOut()
+}
+
+export { signinWithGoogle, signOut };
