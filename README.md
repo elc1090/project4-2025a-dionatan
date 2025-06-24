@@ -5,7 +5,7 @@
 <img src="public/project-preview.png"/>
 
 #### Acesso
-[note-taker.vercel.app](https://note-taker.vercel.app)
+[note-taker.vercel.app](https://note-taker-jgyfave3i-dionatans-projects-a408042c.vercel.app)
 
 #### Desenvolvedor
 Dionatan Eduardo Correa Rodrigues - Ciência da Computação
