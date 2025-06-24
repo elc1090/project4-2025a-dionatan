@@ -22,7 +22,7 @@ const DashboardLayout = async ({ children }: { children: ReactNode }) => {
       {/* Sidebar */}
       <aside className="md:w-64 w-full md:h-auto h-auto bg-white shadow-md flex flex-col">
         <div className="p-4 border-b border-gray-200">
-          <span className="text-2xl font-bold text-indigo-600">TalkToText</span>
+          <span className="text-2xl font-bold text-indigo-600">Note Taker</span>
         </div>
         <nav className="flex-1 p-4">
           <Link href="/dashboard" legacyBehavior>

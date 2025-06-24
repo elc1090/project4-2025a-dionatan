@@ -1,9 +1,8 @@
-// ❌ Remova a diretiva "use client" — esse componente é server component
 import { createClient } from "@/utils/supabase/server";
 import { createNote } from "./action";
 import UpdateButton from "@/components/UpdateButton";
 import DeleteButton from "@/components/DeleteButton";
-import ChatFloating from "@/components/ChatFloating"; // movido para componente separado
+import ChatFloating from "@/components/ChatFloating";
 
 const DashboardPage = async () => {
   const supabase = await createClient();
