@@ -1,14 +1,16 @@
+// ❌ Remova a diretiva "use client" — esse componente é server component
 import { createClient } from "@/utils/supabase/server";
 import { createNote } from "./action";
 import UpdateButton from "@/components/UpdateButton";
 import DeleteButton from "@/components/DeleteButton";
+import ChatFloating from "@/components/ChatFloating"; // movido para componente separado
 
 const DashboardPage = async () => {
   const supabase = await createClient();
   const { data: todos } = await supabase.from("todos").select("*");
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-4 sm:p-6">
+    <div className="relative w-full max-w-4xl mx-auto p-4 sm:p-6">
       <div className="flex flex-col gap-6">
         {/* Formulário para criar nova nota */}
         <form action={createNote} className="flex flex-col sm:flex-row gap-3">
@@ -20,7 +22,7 @@ const DashboardPage = async () => {
           />
           <button
             type="submit"
-            className="bg-indigo-600 text-white px-5 py-2 rounded hover:bg-indigo-700 transition-colors"
+            className="bg-indigo-600 text-white px-5 py-2 cursor-pointer rounded hover:bg-indigo-700 transition-colors"
           >
             Criar
           </button>
@@ -42,6 +44,8 @@ const DashboardPage = async () => {
           ))}
         </div>
       </div>
+
+      <ChatFloating />
     </div>
   );
 };
