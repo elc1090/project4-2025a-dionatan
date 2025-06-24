@@ -27,7 +27,7 @@ export default function LoginPage() {
         {/* Image Side (Hidden on small screens, visible on medium and larger) */}
         <div className="hidden md:flex md:w-1/2 bg-indigo-100 p-6 items-center justify-center rounded-l-lg">
           <img
-            src="./login-image.png"
+            src="./note-img.png"
             alt="Ilustração de Login"
             className="h-full w-full object-cover"
           />
